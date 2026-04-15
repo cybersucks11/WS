@@ -1,0 +1,66 @@
+Slip 21
+Q1] Design HTML form to accept a number and write a PHP script to calculate the factorial of a number using function.
+
+HTML Form
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Factorial Calculator</h2>
+
+<form method="post" action="">
+    Enter Number: <input type="number" name="num" required>
+    <br><br>
+    <input type="submit" name="submit" value="Calculate">
+</form>
+
+</body>
+</html>
+
+PHP Script
+<?php
+function factorial($n) {
+    $fact = 1;
+    for ($i = 1; $i <= $n; $i++) {
+        $fact = $fact * $i;
+    }
+    return $fact;
+}
+
+if (isset($_POST['submit'])) {
+    $num = $_POST['num'];
+    $result = factorial($num);
+
+    echo "<h3>Factorial of $num is $result</h3>";
+}
+?>
+
+
+
+
+ Q.2 Write a short note on OWASP ZAP scanner and give one example.
+OWASP ZAP (Zed Attack Proxy) is a free and open-source web security tool used to find vulnerabilities in web applications.
+________________________________________
+🔹 Features:
+•	Detects common vulnerabilities like: 
+o	SQL Injection 
+o	Cross-Site Scripting (XSS) 
+•	Acts as a proxy between user and website 
+•	Automated scanning + manual testing 
+•	Beginner-friendly interface 
+________________________________________
+🔹 Example:
+Suppose a login page does not validate input properly.
+•	OWASP ZAP sends different test inputs 
+•	It checks application response 
+•	If a vulnerability exists (like SQL Injection), it reports it 
+👉 It shows:
+•	Type of vulnerability 
+•	Risk level 
+•	Suggested fix 
+________________________________________
+🧠 Advantages:
+•	Free tool 
+•	Easy to use 
+•	Helps improve website security
+

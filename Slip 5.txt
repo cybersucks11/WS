@@ -1,0 +1,130 @@
+Slip 5 
+Q1] Design an application that accept the full name, contact number, email-id, password and confirm password. If password and confirm password matched the store accept data into database while storing password encrypt it.
+html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Form</title>
+</head>
+<body>
+<h2>Register</h2>
+<form method="post" action="register.php">
+    Full Name: <input type="text" name="name" required><br><br>
+    Contact No: <input type="text" name="contact" required><br><br>
+    Email: <input type="email" name="email" required><br><br>
+    Password: <input type="password" name="password" required><br><br>
+    Confirm Password: <input type="password" name="confirm" required><br><br>
+    <input type="submit" value="Register">
+</form>
+</body>
+</html>
+Php
+<?php
+
+// Database connection
+$conn = new mysqli("localhost", "root", "", "test");
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed");
+}
+// Get form data
+$name = $_POST['name'];
+$contact = $_POST['contact'];
+$email = $_POST['email'];
+$password = $_POST['password'];
+$confirm = $_POST['confirm'];
+// Check password match
+if ($password == $confirm) {
+    // Encrypt password
+    $encryptedPassword = password_hash($password, PASSWORD_DEFAULT);
+    // Insert into database
+    $sql = "INSERT INTO users (name, contact, email, password)
+            VALUES ('$name', '$contact', '$email', '$encryptedPassword')";
+    if ($conn->query($sql) === TRUE) {
+        echo "Data stored successfully";
+    } else {
+        echo "Error storing data";
+    }
+} else {
+    echo "Password does not match";
+}
+$conn->close();
+?>
+Sql 
+CREATE TABLE users (id INT AUTO_INCREMENT PRIMARY KEY,  name VARCHAR(100),  contact VARCHAR(15),  email VARCHAR(100), password VARCHAR(255));
+
+Q2)  Design a webpage for the following layout For Student profile – where student roll number, 
+name, contact, photo, class and area of interestin column 2. In Colum 1 provide the 
+hyperlinks for Home, Contact us and about us.   
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Profile</title>
+
+    <style>
+        body {
+            font-family: Arial;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        /* Column 1 */
+        .left {
+            width: 25%;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        /* Column 2 */
+        .right {
+            width: 75%;
+            padding: 20px;
+        }
+
+        a {
+            display: block;
+            margin: 10px 0;
+            text-decoration: none;
+            color: blue;
+        }
+
+        img {
+            width: 120px;
+            height: 120px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Student Profile Page</h1>
+
+<div class="container">
+
+    <!-- Column 1 (Links) -->
+    <div class="left">
+        <h3>Menu</h3>
+        <a href="#">Home</a>
+        <a href="#">Contact Us</a>
+        <a href="#">About Us</a>
+    </div>
+
+    <!-- Column 2 (Student Info) -->
+    <div class="right">
+        <h2>Student Details</h2>
+
+        <p><b>Roll Number:</b> 101</p>
+        <p><b>Name:</b> Pranav</p>
+        <p><b>Contact:</b> 9876543210</p>
+        <p><b>Class:</b> FY BSc IT</p>
+        <p><b>Area of Interest:</b> Web Development</p>
+
+        <p><b>Photo:</b></p>
+        <img src="https://via.placeholder.com/120" alt="Student Photo">
+    </div>
+</div>
+</body>
+</html>

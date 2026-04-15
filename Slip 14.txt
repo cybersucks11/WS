@@ -1,0 +1,98 @@
+Slip 14
+Q.1
+Create a PHP program where the user can select items from a product list (e.g., books, pens, or bags) and input quantities. [15M] Display: The selected items with their unit price. The total quantity of items. The total cost. 
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Selection</title>
+</head>
+<body>
+    <h1>Product Selection</h1>
+    <form action="product_selection.php" method="POST">
+        <label for="product">Select Product:</label>
+        <select name="product" id="product" required>
+            <option value="book">Book - $10</option>
+            <option value="pen">Pen - $2</option>
+            <option value="bag">Bag - $20</option>
+        </select><br><br>
+
+        <label for="quantity">Enter Quantity:</label>
+        <input type="number" name="quantity" id="quantity" required min="1"><br><br>
+
+        <input type="submit" value="Calculate Total">
+    </form>
+</body>
+</html>
+
+
+Product_selection.php
+<?php
+// Define unit prices for the products
+$prices = [
+    'book' => 10,  // Price for Book
+    'pen'  => 2,   // Price for Pen
+    'bag'  => 20   // Price for Bag
+];
+
+// Check if the form is submitted
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Get the selected product and quantity from the form
+    $product = $_POST['product'];
+    $quantity = $_POST['quantity'];
+
+    // Get the unit price for the selected product
+    if (isset($prices[$product])) {
+        $unit_price = $prices[$product];
+        $total_cost = $unit_price * $quantity;
+
+        // Display the selected item details
+        echo "<h2>Selected Product:</h2>";
+        echo "<p>Product: " . ucfirst($product) . "</p>";
+        echo "<p>Unit Price: $" . $unit_price . "</p>";
+        echo "<p>Quantity: " . $quantity . "</p>";
+        echo "<p>Total Cost: $" . $total_cost . "</p>";
+    } else {
+        echo "<p>Invalid product selected.</p>";
+    }
+} else {
+    echo "<p>Please select a product and enter a quantity.</p>";
+}
+?>
+
+
+Q2] .Explain OWASP Top 10 threats for web introduction.
+1. Injection
+•	Happens when malicious code is inserted into input fields 
+•	Example: SQL Injection
+👉 Can access or modify database 
+2. Broken Authentication
+•	Weak login system
+👉 Hackers can take over accounts 
+3. Sensitive Data Exposure
+•	Important data (passwords, credit cards) not protected
+👉 Leads to data theft 
+4. XML External Entities (XXE)
+•	Attack using XML input
+👉 Can read internal files or data 
+5. Broken Access Control
+•	Users access data they are not allowed to
+👉 Example: normal user accessing admin panel 
+6. Security Misconfiguration
+•	Poor settings in server or application
+👉 Example: default passwords, open ports 
+7. Cross-Site Scripting (XSS)
+•	Attacker injects script into webpage
+👉 Runs in user’s browser 
+8. Insecure Deserialization
+•	Unsafe data processing
+👉 Can execute harmful code 
+9. Using Components with Known Vulnerabilities
+•	Using outdated libraries/software
+👉 Already known security issues 
+10. Insufficient Logging & Monitoring
+•	No proper tracking of activities
+👉 Attacks go unnoticed

@@ -1,0 +1,161 @@
+Slip 23
+Q.1. Design a webpage for an Employee Profile, where the second column contains the  employee details .                                                                                                                            
+o Employee ID 
+o Name 
+o Designation 
+o Department 
+o Email 
+o Photo 
+In the first column, provide hyperlinks for Home, About Us, and Contact HR. 
+Extend the above question: 
+If the user clicks on the Contact HR link, display the HR department, email and phone number. 
+Create a form to accept new employee details, including: 
+o Name, Employee ID, Designation, Department, Email, and Phone Number. 
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body { font-family: Arial; }
+
+.container {
+    display: flex;
+}
+
+/* Left column */
+.left {
+    width: 25%;
+    background: #f2f2f2;
+    padding: 20px;
+}
+
+/* Right column */
+.right {
+    width: 75%;
+    padding: 20px;
+}
+
+a {
+    display: block;
+    margin: 10px 0;
+    text-decoration: none;
+    color: blue;
+}
+</style>
+
+<script>
+function showHR() {
+    document.getElementById("hr").style.display = "block";
+}
+</script>
+
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Column 1 -->
+    <div class="left">
+        <h3>Menu</h3>
+        <a href="#">Home</a>
+        <a href="#">About Us</a>
+        <a href="#" onclick="showHR()">Contact HR</a>
+    </div>
+
+    <!-- Column 2 -->
+    <div class="right">
+        <h2>Employee Profile</h2>
+        <p><b>Employee ID:</b> 101</p>
+        <p><b>Name:</b> Rahul Patil</p>
+        <p><b>Designation:</b> Developer</p>
+        <p><b>Department:</b> IT</p>
+        <p><b>Email:</b> rahul@gmail.com</p>
+        <img src="photo.jpg" width="100">
+
+        <!-- HR Info -->
+        <div id="hr" style="display:none;">
+            <h3>HR Contact</h3>
+            <p>Department: HR</p>
+            <p>Email: hr@company.com</p>
+            <p>Phone: 9876543210</p>
+        </div>
+
+        <hr>
+
+        <!-- Form -->
+        <h3>Add New Employee</h3>
+        <form>
+            Name: <input type="text"><br><br>
+            Employee ID: <input type="text"><br><br>
+            Designation: <input type="text"><br><br>
+            Department: <input type="text"><br><br>
+            Email: <input type="email"><br><br>
+            Phone: <input type="text"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</div>
+</body>
+</html>
+
+
+
+
+Q.2. Create a feedback form with the following fields:                                                
+Name 
+Email 
+Feedback message 
+A rating (1–5 stars) 
+[15M] 
+Upon form submission, display the user&#39;s name, email, and feedback along with a 
+dynamically generatedstar rating (e.g., if the rating is 4, display 4 stars).
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Feedback Form</h2>
+
+<form onsubmit="return showFeedback()">
+    Name: <input type="text" id="name"><br><br>
+    Email: <input type="email" id="email"><br><br>
+    Feedback: <br>
+    <textarea id="msg"></textarea><br><br>
+
+    Rating:
+    <select id="rating">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select><br><br>
+
+    <input type="submit" value="Submit">
+</form>
+
+<div id="result"></div>
+
+<script>
+function showFeedback() {
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("email").value;
+    var msg = document.getElementById("msg").value;
+    var rating = document.getElementById("rating").value;
+
+    var stars = "";
+    for (var i = 0; i < rating; i++) {
+        stars += "⭐";
+    }
+
+    document.getElementById("result").innerHTML =
+        "<h3>Feedback Submitted</h3>" +
+        "Name: " + name + "<br>" +
+        "Email: " + email + "<br>" +
+        "Message: " + msg + "<br>" +
+        "Rating: " + stars;
+    return false; // prevent page reload
+}
+</script>
+</body>
+</html>

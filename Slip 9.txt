@@ -1,0 +1,171 @@
+Slip 9 
+Q.1.Design a HTML form for Bus Ticket Reservation consisting of fields for Name, Address,     contact no, source station(Dropdown list), Destination station, Date of booking, date of journey, no of passenger, name of passenger, gender of passenger etc. (Use proper alignment)            
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bus Ticket Reservation</title>
+    <style>
+        body { font-family: Arial; }
+        table { margin: auto; }
+        td { padding: 8px; }
+    </style>
+</head>
+
+<body>
+
+<h2 align="center">Bus Ticket Reservation Form</h2>
+
+<form>
+<table border="1">
+
+<tr>
+    <td>Name:</td>
+    <td><input type="text"></td>
+</tr>
+
+<tr>
+    <td>Address:</td>
+    <td><textarea></textarea></td>
+</tr>
+
+<tr>
+    <td>Contact No:</td>
+    <td><input type="text"></td>
+</tr>
+
+<tr>
+    <td>Source Station:</td>
+    <td>
+        <select>
+            <option>Pune</option>
+            <option>Mumbai</option>
+            <option>Nashik</option>
+        </select>
+    </td>
+</tr>
+
+<tr>
+    <td>Destination Station:</td>
+    <td>
+        <select>
+            <option>Delhi</option>
+            <option>Goa</option>
+            <option>Hyderabad</option>
+        </select>
+    </td>
+</tr>
+
+<tr>
+    <td>Date of Booking:</td>
+    <td><input type="date"></td>
+</tr>
+
+<tr>
+    <td>Date of Journey:</td>
+    <td><input type="date"></td>
+</tr>
+
+<tr>
+    <td>No. of Passengers:</td>
+    <td><input type="number"></td>
+</tr>
+
+<tr>
+    <td>Passenger Name:</td>
+    <td><input type="text"></td>
+</tr>
+
+<tr>
+    <td>Gender:</td>
+    <td>
+        <input type="radio" name="g"> Male
+        <input type="radio" name="g"> Female
+    </td>
+</tr>
+<tr>
+    <td colspan="2" align="center">
+        <input type="submit" value="Book Ticket">
+        <input type="reset" value="Reset">
+    </td>
+</tr>
+
+</table>
+</form>
+</body>
+</html>
+
+Q.2.Design an HTML form for customer registration visiting a departmental store. Form should 
+consists of fields such as name, contact no ,gender, preferred days of purchasing, favorite item(to be selected from a list of items),suggestions etc.. You should provide button to submit as well as reset the form contents.   
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Registration</title>
+    <style>
+        body { font-family: Arial; }
+        table { margin: auto; }
+        td { padding: 8px; }
+    </style>
+</head>
+
+<body>
+
+<h2 align="center">Customer Registration Form</h2>
+
+<form>
+<table border="1">
+
+<tr>
+    <td>Name:</td>
+    <td><input type="text"></td>
+</tr>
+
+<tr>
+    <td>Contact No:</td>
+    <td><input type="text"></td>
+</tr>
+
+<tr>
+    <td>Gender:</td>
+    <td>
+        <input type="radio" name="g"> Male
+        <input type="radio" name="g"> Female
+    </td>
+</tr>
+
+<tr>
+    <td>Preferred Days:</td>
+    <td>
+        <input type="checkbox"> Monday
+        <input type="checkbox"> Saturday
+        <input type="checkbox"> Sunday
+    </td>
+</tr>
+
+<tr>
+    <td>Favorite Item:</td>
+    <td>
+        <select>
+            <option>Clothes</option>
+            <option>Electronics</option>
+            <option>Groceries</option>
+        </select>
+    </td>
+</tr>
+
+<tr>
+    <td>Suggestions:</td>
+    <td><textarea></textarea></td>
+</tr>
+
+<tr>
+    <td colspan="2" align="center">
+        <input type="submit" value="Submit">
+        <input type="reset" value="Reset">
+    </td>
+</tr>
+
+</table>
+</form>
+
+</body>
+</html>

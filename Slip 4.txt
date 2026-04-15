@@ -1,0 +1,141 @@
+Slip 4 
+Slip 4 
+Write a program to access online weather API.
+
+Weather.php
+<?php
+
+// Replace with your API key from OpenWeatherMap
+$apiKey = "YOUR_API_KEY";
+
+// City name
+$city = "Pune";
+
+// API URL
+$url = "https://api.openweathermap.org/data/2.5/weather?q=$city&appid=$apiKey&units=metric";
+
+// Fetch data from API
+$response = file_get_contents($url);
+
+// Convert JSON to PHP array
+$data = json_decode($response, true);
+
+// Display weather information
+if ($data && $data["cod"] == 200) {
+    echo "City: " . $data["name"] . "<br>";
+    echo "Temperature: " . $data["main"]["temp"] . " °C<br>";
+    echo "Humidity: " . $data["main"]["humidity"] . "%<br>";
+    echo "Weather: " . $data["weather"][0]["description"] . "<br>";
+} else {
+    echo "Error fetching weather data";
+}
+?>
+How to Get API Key
+1.	Go to: https://openweathermap.org/api
+2.	Sign up (free)
+3.	Copy your API Key
+4.	Replace "YOUR_API_KEY" in code
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Slip 4
+Q1] Write a program to access online weather API.
+Weather.php
+
+<?php
+// Replace with your API key from OpenWeatherMap
+$apiKey = "YOUR_API_KEY";
+
+// City name
+$city = "Pune";
+
+// API URL
+$url = "https://api.openweathermap.org/data/2.5/weather?q=$city&appid=$apiKey&units=metric";
+
+// Fetch data from API
+$response = file_get_contents($url);
+
+// Convert JSON to PHP array
+$data = json_decode($response, true);
+
+// Display weather information
+if ($data && $data["cod"] == 200) {
+    echo "City: " . $data["name"] . "<br>";
+    echo "Temperature: " . $data["main"]["temp"] . " °C<br>";
+    echo "Humidity: " . $data["main"]["humidity"] . "%<br>";
+    echo "Weather: " . $data["weather"][0]["description"] . "<br>";
+} else {
+    echo "Error fetching weather data";
+}
+
+?>
+
+
+How to Get API Key
+1.	Go to: https://openweathermap.org/api
+2.	Sign up (free)
+3.	Copy your API Key
+4.	Replace "YOUR_API_KEY" in code
+
+Q2] Design an application to accept username and password. While accepting password check 
+whether is it made of numbers, alphabets, special symbols and password length should be 
+greater than 8. If password is as per requirement, then print “You enter red strong password” 
+else print error message “Enter complex password”.
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Password Validation</title>
+    <script>
+        function checkPassword() {
+            var username = document.getElementById("user").value;
+            var password = document.getElementById("pass").value;
+
+            // Conditions
+            var hasNumber = /[0-9]/.test(password);
+            var hasAlpha = /[a-zA-Z]/.test(password);
+            var hasSpecial = /[!@#$%^&*]/.test(password);
+            var lengthCheck = password.length > 8;
+
+            if (hasNumber && hasAlpha && hasSpecial && lengthCheck) {
+                document.getElementById("result").innerHTML = "You entered a strong password";
+            } else {
+                document.getElementById("result").innerHTML = "Enter complex password";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Login Form</h2>
+    Username: <input type="text" id="user"><br><br>
+    Password: <input type="password" id="pass"><br><br>
+    <button onclick="checkPassword()">Submit</button>
+    <p id="result"></p>
+</body>
+</html>
+
+
+
+
+

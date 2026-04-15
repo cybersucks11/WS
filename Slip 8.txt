@@ -1,0 +1,47 @@
+Slip 8
+Q1] Create an html page with 7 separate lines in different colors. State color of each line in its text.
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Colored Lines</title>
+</head>
+<body>
+<p style="color:red;">This line is Red</p>
+<p style="color:blue;">This line is Blue</p>
+<p style="color:green;">This line is Green</p>
+<p style="color:orange;">This line is Orange</p>
+<p style="color:purple;">This line is Purple</p>
+<p style="color:brown;">This line is Brown</p>
+<p style="color:black;">This line is Black</p>
+</body>
+</html>
+
+Q2] Design an application to accept username and password. While accepting password check whether is it made of numbers, alphabets, special symbols and password length should be greater than 8. If password is as per requirement, then print “You enter red strong password” else print error message “Enter complex password”. 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Password Check</title>
+    <script>
+        function validate() {
+            var username = document.getElementById("user").value;
+            var password = document.getElementById("pass").value;
+            var hasNumber = /[0-9]/.test(password);
+            var hasAlpha = /[a-zA-Z]/.test(password);
+            var hasSpecial = /[!@#$%^&*]/.test(password);
+            var lengthCheck = password.length > 8;
+            if (hasNumber && hasAlpha && hasSpecial && lengthCheck) {
+                document.getElementById("msg").innerHTML = "You enter a strong password";
+            } else {
+                document.getElementById("msg").innerHTML = "Enter complex password";
+            }
+        }
+    </script>
+</head>
+<body>
+<h2>Login Form</h2>
+Username: <input type="text" id="user"><br><br>
+Password: <input type="password" id="pass"><br><br>
+<button onclick="validate()">Submit</button>
+<p id="msg"></p>
+</body>
+</html>

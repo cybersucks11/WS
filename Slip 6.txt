@@ -1,0 +1,100 @@
+Slip 6
+Slip 6 Q.1
+Write a PHP program to write a program for find the given number is palindrome
+Or not.
+
+Palin.php
+
+<?php
+function isPalindrome($number) {
+// Convert number to string
+$strNumber = strval($number);
+// Reverse the string
+$reverseStr = strrev($strNumber);
+// Check if original and reversed strings are the same
+if ($strNumber === $reverseStr) {
+return true;
+} else {
+return false;
+}
+}
+
+// Example usage
+$number = 121; // Change this number to test different values
+if (isPalindrome($number)) {
+echo "$number is a palindrome.";
+} else {
+echo "$number is not a palindrome.";
+}
+?>
+
+Q.2
+Create a XML document which contains details of cars car like: id, company name, model engine and mileage and display the same as a table by using element by using XSLT
+
+Cars.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="cars.xsl"?>
+<Cars>
+	<Car>
+    	<ID>1</ID>
+    	<Company>Toyota</Company>
+    	<Model>Corolla</Model>
+    	<Engine>1.8L</Engine>
+    	<Mileage>15 km/l</Mileage>
+	</Car>
+	<Car>
+    	<ID>2</ID>
+    	<Company>Honda</Company>
+    	<Model>Civic</Model>
+    	<Engine>1.5L Turbo</Engine>
+    	<Mileage>18 km/l</Mileage>
+	</Car>
+	<Car>
+    	<ID>3</ID>
+    	<Company>Ford</Company>
+    	<Model>Mustang</Model>
+    	<Engine>5.0L V8</Engine>
+    	<Mileage>10 km/l</Mileage>
+	</Car>
+</Cars>
+
+
+
+cars.xsl (XSLT Transformation)
+
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+	<xsl:template match="/">
+    	<html>
+        	<head>
+            	<title>Car Details</title>
+            	<style>
+                	table { border-collapse: collapse; width: 50%; margin: 20px; }
+                	th, td { border: 1px solid black; padding: 8px; text-align: left; }
+                	th { background-color: #f2f2f2; }
+            	</style>
+        	</head>
+        	<body>
+            	<h2>Car Details</h2>
+            	<table>
+                	<tr>
+                    	<th>ID</th>
+                    	<th>Company</th>
+                    	<th>Model</th>
+                    	<th>Engine</th>
+                    	<th>Mileage</th>
+                	</tr>
+                	<xsl:for-each select="Cars/Car">
+                    	<tr>
+                        	<td><xsl:value-of select="ID"/></td>
+                        	<td><xsl:value-of select="Company"/></td>
+                        	<td><xsl:value-of select="Model"/></td>
+                        	<td><xsl:value-of select="Engine"/></td>
+                        	<td><xsl:value-of select="Mileage"/></td>
+                    	</tr>
+                	</xsl:for-each>
+            	</table>
+        	</body>
+    	</html>
+	</xsl:template>
+</xsl:stylesheet>

@@ -1,0 +1,86 @@
+Slip 24
+Q.1 .Write a script to create an XML file called “Timetable.xml” containing 3 records for a weekly class timetable. Each record should include: 
+● Day of the Week 
+● Class Name
+ ● Instructor
+ ● Time Slot
+ ● Classroom
+
+
+Timetable.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<Timetable>
+    <Record>
+        <Day>Monday</Day>
+        <ClassName>Mathematics</ClassName>
+        <Instructor>Mr. Sharma</Instructor>
+        <TimeSlot>10:00 AM - 11:00 AM</TimeSlot>
+        <Classroom>A101</Classroom>
+    </Record>
+    <Record>
+        <Day>Wednesday</Day>
+        <ClassName>Computer Science</ClassName>
+        <Instructor>Ms. Patil</Instructor>
+        <TimeSlot>11:00 AM - 12:00 PM</TimeSlot>
+        <Classroom>B202</Classroom>
+    </Record>
+
+    <Record>
+        <Day>Friday</Day>
+        <ClassName>Physics</ClassName>
+        <Instructor>Dr. Kumar</Instructor>
+        <TimeSlot>1:00 PM - 2:00 PM</TimeSlot>
+        <Classroom>C303</Classroom>
+    </Record>
+</Timetable>
+
+
+
+
+
+ Q.2 Write a program that uses a currency exchange API (e.g., Exchange Rate-API or Fixer.io) to perform the following:
+ ● Convert a specified amount from one currency to another.
+ ● Display the exchange rate for a given currency pair.
+ ● Handle invalid currency codes or API errors gracefully.
+
+ExchangeRate.php
+<?php
+// Replace with your API key
+$apiKey = "YOUR_API_KEY";
+// Input values
+$from = "USD";
+$to = "INR";
+$amount = 100;
+// API URL
+$url = "https://v6.exchangerate-api.com/v6/$apiKey/latest/$from";
+// Fetch API response
+$response = @file_get_contents($url);
+if ($response === FALSE) {
+    die("Error: Unable to connect to API");
+}
+
+// Decode JSON
+$data = json_decode($response, true);
+// Check API status
+if ($data["result"] != "success") {
+    die("Error: Invalid API response");
+}
+// Check if target currency exists
+if (!isset($data["conversion_rates"][$to])) {
+    die("Error: Invalid currency code");
+}
+// Get exchange rate
+$rate = $data["conversion_rates"][$to];
+// Convert amount
+$converted = $amount * $rate;
+// Display results
+echo "From Currency: $from <br>";
+echo "To Currency: $to <br>";
+echo "Exchange Rate: 1 $from = $rate $to <br>";
+echo "Converted Amount: $amount $from = $converted $to <br>";
+?>
+
+How to Get API Key
+1.	Visit: https://www.exchangerate-api.com/
+2.	Sign up (free)
+3.	Replace "YOUR_API_KEY" in code

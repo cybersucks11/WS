@@ -1,0 +1,123 @@
+Slip 11
+1. Write a PHP script to accept username and password. If in the first three chances, username and password entered is correct then display second form with “Welcome message” otherwise display error message. [Use Session]
+
+Login.php
+<?php
+session_start();
+
+// Initialize attempts
+if (!isset($_SESSION['attempts'])) {
+    $_SESSION['attempts'] = 0;
+}
+
+if (isset($_POST['login'])) {
+    $username = $_POST['user'];
+    $password = $_POST['pass'];
+
+    // Correct credentials
+    if ($username == "admin" && $password == "1234") {
+        $_SESSION['success'] = true;
+        header("Location: welcome.php");
+    } else {
+        $_SESSION['attempts']++;
+
+        if ($_SESSION['attempts'] >= 3) {
+            echo "Login blocked! Too many attempts.";
+        } else {
+            echo "Invalid Username or Password. Attempts left: " . (3 - $_SESSION['attempts']);
+        }
+    }
+}
+?>
+<form method="post">
+    Username: <input type="text" name="user"><br><br>
+    Password: <input type="password" name="pass"><br><br>
+    <input type="submit" name="login" value="Login">
+</form>
+
+Welcome.php
+<?php
+session_start();
+
+if (isset($_SESSION['success'])) {
+    echo "<h2>Welcome</h2>";
+} else {
+    echo "Unauthorized access";
+}
+?>
+
+
+
+ 2. Write a PHP script to accept Employee details (Eno, Ename, Address) on first page. On second page accept earning (Basic, DA, HRA). On third page print Employee information (Eno, Ename,Address,Basic, DA, HRA, Total)
+
+page1.php (Employee Details)
+<?php session_start(); ?>
+
+<form method="post" action="page2.php">
+    Eno: <input type="text" name="eno"><br><br>
+    Ename: <input type="text" name="ename"><br><br>
+    Address: <input type="text" name="address"><br><br>
+
+    <input type="submit" value="Next">
+</form>
+page2.php (Salary Details)
+<?php
+session_start();
+
+// Store data from page1
+$_SESSION['eno'] = $_POST['eno'];
+$_SESSION['ename'] = $_POST['ename'];
+$_SESSION['address'] = $_POST['address'];
+?>
+
+<form method="post" action="page3.php">
+    Basic: <input type="text" name="basic"><br><br>
+    DA: <input type="text" name="da"><br><br>
+    HRA: <input type="text" name="hra"><br><br>
+
+    <input type="submit" value="Submit">
+</form>
+
+page3.php (Display Details)
+<?php
+session_start();
+// Get previous data
+$eno = $_SESSION['eno'];
+$ename = $_SESSION['ename'];
+$address = $_SESSION['address'];
+// Get salary data
+$basic = $_POST['basic'];
+$da = $_POST['da'];
+$hra = $_POST['hra'];
+// Calculate total
+$total = $basic + $da + $hra;
+// Display
+echo "<h2>Employee Details</h2>";
+echo "Eno: $eno <br>";
+echo "Name: $ename <br>";
+echo "Address: $address <br>";
+echo "Basic: $basic <br>";
+echo "DA: $da <br>";
+echo "HRA: $hra <br>";
+echo "Total Salary: $total <br>";
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

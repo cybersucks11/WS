@@ -1,0 +1,31 @@
+Slip 16
+Q1] Using SQL injection attack on Login checks whether you can log into another user’s account without knowing the correct password. 
+
+
+
+Q.2. Write a short note Burp Suite Scanner with an example.
+Burp Suite Scanner is a tool used for web application security testing.
+It helps in identifying vulnerabilities in websites and applications.
+ Features:
+•	Automatically scans websites for security issues 
+•	Detects vulnerabilities like: 
+o	SQL Injection 
+o	Cross-Site Scripting (XSS) 
+o	Security misconfigurations 
+•	Provides detailed reports 
+Example:
+Suppose a website has a login form.
+Burp Suite Scanner:
+1.	Sends different test inputs to the form 
+2.	Checks how the application responds 
+3.	Detects if the application is vulnerable (e.g., improper input handling) 
+If vulnerability is found, it shows:
+•	Type of issue 
+•	Risk level 
+•	Suggested fix 
+Advantages:
+•	Easy to use 
+•	Automated testing 
+•	Helps improve application security 
+Conclusion:
+Burp Suite Scanner is an important tool for identifying and fixing web application vulnerabilities.

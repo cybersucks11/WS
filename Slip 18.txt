@@ -1,0 +1,39 @@
+Slip 18 
+Q1] Write a script to create “breakfast.xml” file with multiple elements as shown below: French 
+Fries Rs45 Young youths are very much interested to eat it 650 Write a script to add multiple 
+elements in “breakfast.xml” file of category, Juice.                                                                
+
+“breakfast.xml”
+<?xml version="1.0" encoding="UTF-8"?>
+<BreakfastMenu>
+    <Item category="Snacks">
+        <Name>French Fries</Name>
+        <Price>Rs45</Price>
+        <Description>Young youths are very much interested to eat it</Description>
+        <Calories>650</Calories>
+    </Item>
+    <Item category="Snacks">
+        <Name>Burger</Name>
+        <Price>Rs80</Price>
+        <Description>Tasty fast food loved by all</Description>
+        <Calories>700</Calories>
+    </Item>
+</BreakfastMenu>
+
+Add Multiple Elements (Category = Juice)
+<Item category="Juice">
+    <Name>Orange Juice</Name>
+    <Price>Rs60</Price>
+    <Description>Fresh and healthy drink</Description>
+    <Calories>120</Calories>
+</Item>
+<Item category="Juice">
+    <Name>Mango Juice</Name>
+    <Price>Rs70</Price>
+    <Description>Sweet and refreshing</Description>
+    <Calories>150</Calories>
+</Item>
+Q.2 Perform SQL injection to modify another user profile data through an UPDATE query.
+UPDATE users 
+SET name='Rahul', email='rahul@gmail.com' 
+WHERE user_id=1;

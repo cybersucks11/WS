@@ -1,0 +1,57 @@
+Slip 22
+Q.1 Write down OWASP Top 10 threats for API .
+1. Broken Object Level Authorization (BOLA)
+•	Users access data of other users
+👉 Example: changing user ID in URL 
+2. Broken Authentication
+•	Weak login/authentication system
+ Attackers can take over accounts 
+3. Broken Object Property Level Authorization
+•	Unauthorized access to specific data fields 
+4. Unrestricted Resource Consumption
+•	No limits on API usage
+ Can lead to server overload (DoS) 
+5. Broken Function Level Authorization
+•	Users access admin functions without permission 
+6. Unrestricted Access to Sensitive Business Flows
+•	Important operations not protected Example: unlimited transactions 
+7. Server Side Request Forgery (SSRF)
+•	API fetches data from unintended sources 
+8. Security Misconfiguration
+•	Improper API settings
+ Example: open endpoints 
+9. Improper Inventory Management
+•	Unused or old APIs still active 
+10. Unsafe Consumption of APIs
+•	Trusting external APIs without validation
+
+
+
+ Q.2 Design an application to accept username and password. While accepting a password check whether it is made of numbers, alphabets, special symbols and password length should be greater than 8. If password is as per requirement, then print “You entered strong password” else print error message “Enter complex password”.
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Password Validation</h2>
+<form method="post">
+    Username: <input type="text" name="username"><br><br>
+    Password: <input type="password" name="password"><br><br>
+    <input type="submit" name="submit" value="Submit">
+</form>
+<?php
+if (isset($_POST['submit'])) {
+    $password = $_POST['password'];
+    // Check conditions
+    $length = strlen($password) > 8;
+    $number = preg_match('/[0-9]/', $password);
+    $alphabet = preg_match('/[A-Za-z]/', $password);
+    $special = preg_match('/[\W]/', $password);
+    if ($length && $number && $alphabet && $special) {
+        echo "<h3>You entered strong password</h3>";
+    } else {
+        echo "<h3>Enter complex password</h3>";
+    }
+}
+?>
+</body>
+</html>
+

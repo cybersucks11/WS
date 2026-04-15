@@ -1,0 +1,66 @@
+Slip 13 
+	Q.1 
+Design a HTML form to accept a number and write a PHP script to display each digit of a number in words. 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number to Words</title>
+</head>
+<body>
+    <h1>Enter a Number</h1>
+    <form action="number_to_words.php" method="POST">
+        <label for="number">Number:</label>
+        <input type="number" name="number" id="number" required><br><br>
+        
+        <input type="submit" value="Convert to Words">
+    </form>
+</body>
+</htm
+
+Number_to_words.php
+<?php
+// Function to convert a digit to its word representation
+function digitToWord($digit) {
+    $words = [
+        '0' => 'Zero',
+        '1' => 'One',
+        '2' => 'Two',
+        '3' => 'Three',
+        '4' => 'Four',
+        '5' => 'Five',
+        '6' => 'Six',
+        '7' => 'Seven',
+        '8' => 'Eight',
+        '9' => 'Nine'
+    ];
+
+    // Return the word for the digit
+    return isset($words[$digit]) ? $words[$digit] : '';
+}
+
+// Check if form is submitted
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Get the number from the form
+    $number = $_POST['number'];
+
+    // Convert the number to a string to access each digit
+    $number_str = strval($number);
+
+    // Store the result in an array
+    $words = [];
+
+    // Loop through each digit of the number
+    foreach (str_split($number_str) as $digit) {
+        // Convert each digit to its word and add to the result
+        $words[] = digitToWord($digit);
+    }
+
+    // Display the result
+    echo "<h2>Number in Words:</h2>";
+    echo implode(' ', $words);
+}
+?>
+  Q.2] same as Q1]

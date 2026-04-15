@@ -1,0 +1,133 @@
+Slip 12 
+Q.1
+Design HTML form to accept dimension of a cylinder and write a PHP script to Calculate the area and volume of Cylinder using a function . 
+
+index.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cylinder Dimensions</title>
+</head>
+<body>
+    <h1>Enter Cylinder Dimensions</h1>
+    <form action="cylinder.php" method="POST">
+        <label for="radius">Radius (in cm):</label>
+        <input type="number" name="radius" id="radius" step="any" required><br><br>
+        
+        <label for="height">Height (in cm):</label>
+        <input type="number" name="height" id="height" step="any" required><br><br>
+        
+        <input type="submit" value="Calculate">
+    </form>
+</body>
+</html>
+
+Cylinder.php
+<?php
+// Function to calculate the area and volume of the cylinder
+function calculateCylinder($radius, $height) {
+    // Constants
+    define('PI', 3.14159265359);
+    
+    // Calculate the surface area and volume
+    $area = 2 * PI * $radius * ($radius + $height); // Surface Area: 2πr(r+h)
+    $volume = PI * pow($radius, 2) * $height; // Volume: πr²h
+
+    // Return the results as an array
+    return array('area' => $area, 'volume' => $volume);
+}
+
+// Check if form is submitted
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Get the radius and height from the form
+    $radius = $_POST['radius'];
+    $height = $_POST['height'];
+
+    // Ensure the values are positive
+    if ($radius > 0 && $height > 0) {
+        // Call the function to calculate the area and volume
+        $results = calculateCylinder($radius, $height);
+        echo "<h2>Results</h2>";
+        echo "Surface Area: " . round($results['area'], 2) . " cm²<br>";
+        echo "Volume: " . round($results['volume'], 2) . " cm³<br>";
+    } else {
+        echo "Please enter valid positive values for both radius and height.";
+    }
+}
+?>
+
+
+
+
+Q.2 Design HTML form to accept two strings and following three options (use radio button) and write a PHP script to perform the selected operations on String. [15M] a. Compare 2 strings b. Convert string into Uppercase c. Convert string into Lowercase
+
+Index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Operations</title>
+</head>
+<body>
+    <h1>String Operations</h1>
+    <form action="string_operations.php" method="POST">
+        <label for="string1">String 1:</label>
+        <input type="text" name="string1" id="string1" required><br><br>
+        
+        <label for="string2">String 2:</label>
+        <input type="text" name="string2" id="string2" required><br><br>
+
+        <label>Select Operation:</label><br>
+        <input type="radio" name="operation" value="compare" required> Compare 2 Strings<br>
+        <input type="radio" name="operation" value="uppercase"> Convert String to Uppercase<br>
+        <input type="radio" name="operation" value="lowercase"> Convert String to Lowercase<br><br>
+
+        <input type="submit" value="Perform Operation">
+    </form>
+</body>
+</html>
+
+
+
+
+String_operations.php
+
+<?php
+// Function to perform the selected operation
+function performOperation($string1, $string2, $operation) {
+    switch ($operation) {
+        case 'compare':
+            // Compare two strings
+            if ($string1 === $string2) {
+                return "The strings are identical.";
+            } else {
+                return "The strings are not identical.";
+            }
+        case 'uppercase':
+            // Convert both strings to uppercase
+            return "String 1 in Uppercase: " . strtoupper($string1) . "<br>String 2 in Uppercase: " . strtoupper($string2);
+        case 'lowercase':
+            // Convert both strings to lowercase
+            return "String 1 in Lowercase: " . strtolower($string1) . "<br>String 2 in Lowercase: " . strtolower($string2);
+        default:
+            return "Invalid operation.";
+    }
+}
+
+// Check if form is submitted
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Get the input strings and selected operation
+    $string1 = $_POST['string1'];
+    $string2 = $_POST['string2'];
+    $operation = $_POST['operation'];
+
+    // Perform the operation and show the result
+    $result = performOperation($string1, $string2, $operation);
+    echo "<h2>Operation Result:</h2>";
+    echo $result;
+}
+?>

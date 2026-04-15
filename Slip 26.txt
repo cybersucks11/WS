@@ -1,0 +1,122 @@
+Slip 26
+Q1] Q.1.Write a script that generates an XML file named “Student.xml” containing at least 5 student 
+records. Each record should include the following data:                                          
+[15M] 
+● Student ID 
+● Student Name 
+● Age 
+● Gender 
+● Program 
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Students>
+
+    <Student>
+        <StudentID>101</StudentID>
+        <StudentName>Pranav</StudentName>
+        <Age>18</Age>
+        <Gender>Male</Gender>
+        <Program>BSc IT</Program>
+    </Student>
+
+    <Student>
+        <StudentID>102</StudentID>
+        <StudentName>Amit</StudentName>
+        <Age>19</Age>
+        <Gender>Male</Gender>
+        <Program>BSc CS</Program>
+    </Student>
+
+    <Student>
+        <StudentID>103</StudentID>
+        <StudentName>Neha</StudentName>
+        <Age>18</Age>
+        <Gender>Female</Gender>
+        <Program>BCA</Program>
+    </Student>
+
+    <Student>
+        <StudentID>104</StudentID>
+        <StudentName>Riya</StudentName>
+        <Age>20</Age>
+        <Gender>Female</Gender>
+        <Program>BBA</Program>
+    </Student>
+
+    <Student>
+        <StudentID>105</StudentID>
+        <StudentName>Rahul</StudentName>
+        <Age>21</Age>
+        <Gender>Male</Gender>
+        <Program>BCom</Program>
+    </Student>
+
+</Students>
+
+Q1] Create a simple web service called Library Book Service. It should manage a table of books and their details (title, author, genre, and price). The service must provide the following . functionalities: 
+• Add Book: Add a new book to the table. 
+• Delete Book: Remove a book based on its ID.
+ • Update Book: Modify the details of an existing book.
+ • Get Book Details: Retrieve details of all books or a specific book by ID.
+
+CREATE TABLE books ( id INT PRIMARY KEY AUTO_INCREMENT, title VARCHAR(100), author VARCHAR(100), genre VARCHAR(50),price INT);
+
+library_service.php
+<?php
+$conn = mysqli_connect("localhost", "root", "", "test");
+
+if (!$conn) {
+    die("Connection Failed");
+}
+$action = $_GET['action'];
+//  Add Book
+if ($action == "add") {
+    $title = $_GET['title'];
+    $author = $_GET['author'];
+    $genre = $_GET['genre'];
+    $price = $_GET['price'];
+    $sql = "INSERT INTO books (title, author, genre, price) 
+            VALUES ('$title','$author','$genre','$price')";
+    echo mysqli_query($conn, $sql) ? "Book Added" : "Error";
+}
+//  Delete Book
+if ($action == "delete") {
+    $id = $_GET['id'];
+    $sql = "DELETE FROM books WHERE id='$id'";
+    echo mysqli_query($conn, $sql) ? "Book Deleted" : "Error";
+}
+//  Update Book
+if ($action == "update") {
+    $id = $_GET['id'];
+    $title = $_GET['title'];
+    $author = $_GET['author'];
+    $genre = $_GET['genre'];
+    $price = $_GET['price'];
+    $sql = "UPDATE books 
+            SET title='$title', author='$author', 
+                genre='$genre', price='$price' 
+            WHERE id='$id'";
+    echo mysqli_query($conn, $sql) ? "Book Updated" : "Error";
+}
+//  Get Book Details
+if ($action == "get") {  
+    // If ID is provided → single book
+    if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+        $result = mysqli_query($conn, "SELECT * FROM books WHERE id='$id'");
+    } 
+    // Otherwise → all books
+    else {
+        $result = mysqli_query($conn, "SELECT * FROM books");
+    }
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo "ID: " . $row['id'] . "<br>";
+        echo "Title: " . $row['title'] . "<br>";
+        echo "Author: " . $row['author'] . "<br>";
+        echo "Genre: " . $row['genre'] . "<br>";
+        echo "Price: ₹" . $row['price'] . "<br><br>";
+    }
+}
+mysqli_close($conn);
+?>

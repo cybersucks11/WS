@@ -1,0 +1,87 @@
+Slip 1
+Q1)  Design a webpage for the following layout For Student profile – where student roll number, name, contact, photo, class and area of interest in column 2. In Colum 1 provide the hyperlinks for Home, Contact us and about us.
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Profile</title>
+    <style>
+        body {
+            font-family: Arial;
+        }
+        .container {
+            display: flex;
+        }
+        /* Column 1 */
+        .menu {
+            width: 25%;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+        .menu a {
+            display: block;
+            margin: 10px 0;
+            text-decoration: none;
+            color: black;
+        }
+        /* Column 2 */
+        .profile {
+            width: 75%;
+            padding: 20px;
+        }
+        img {
+            width: 150px;
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Column 1 -->
+    <div class="menu">
+        <h3>Menu</h3>
+        <a href="#">Home</a>
+        <a href="#">Contact Us</a>
+        <a href="#">About Us</a>
+    </div>
+    <!-- Column 2 -->
+    <div class="profile">
+        <h2>Student Profile</h2>
+        <p><b>Roll Number:</b> 101</p>
+        <p><b>Name:</b> Pranav</p>
+        <p><b>Contact:</b> 9876543210</p>
+        <p><b>Photo:</b></p>
+        <img src="https://via.placeholder.com/150" alt="Student Photo">
+        <p><b>Class:</b> FY BSc IT</p>
+        <p><b>Area of Interest:</b> Web Development</p>
+    </div>
+</div>
+</body>
+</html>
+
+Q2) Create a login form with a username and password. Display “Welcome” message if [15M] 
+username and password is same otherwise display “Invalid username or password” message. 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Form</title>
+    <script>
+        function checkLogin() {
+            var username = document.getElementById("user").value;
+            var password = document.getElementById("pass").value;
+            if (username === password) {
+                document.getElementById("result").innerHTML = "Welcome";
+            } else {
+                document.getElementById("result").innerHTML = "Invalid username or password";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Login Form</h2>
+    Username: <input type="text" id="user"><br><br>
+    Password: <input type="password" id="pass"><br><br>
+    <button onclick="checkLogin()">Login</button>
+    <p id="result"></p>
+</body>
+</html>

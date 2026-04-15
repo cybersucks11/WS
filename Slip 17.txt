@@ -1,0 +1,108 @@
+Slip 17 
+1. Create a PHP program where the user can select items from a product list (e.g., books, pens, or bags) and  input quantities.                                                                                          
+Display:  
+ The selected items with their unit price. 
+The total quantity of items. 
+The total cost. 
+
+HTML Form (index.php)
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Product Selection</h2>
+
+<form method="post" action="">
+    Books (₹100): <input type="number" name="books" value="0"><br><br>
+    Pens (₹20): <input type="number" name="pens" value="0"><br><br>
+    Bags (₹500): <input type="number" name="bags" value="0"><br><br>
+
+    <input type="submit" name="submit" value="Calculate">
+</form>
+
+</body>
+</html>
+
+Php
+<?php
+if(isset($_POST['submit']))
+{
+    $books = $_POST['books'];
+    $pens = $_POST['pens'];
+    $bags = $_POST['bags'];
+
+    // Prices
+    $book_price = 100;
+    $pen_price = 20;
+    $bag_price = 500;
+
+    // Total quantity
+    $total_qty = $books + $pens + $bags;
+
+    // Total cost
+    $total_cost = ($books * $book_price) + ($pens * $pen_price) + ($bags * $bag_price);
+
+    echo "<h3>Selected Items:</h3>";
+    echo "Books: $books × ₹100 = ₹" . ($books * $book_price) . "<br>";
+    echo "Pens: $pens × ₹20 = ₹" . ($pens * $pen_price) . "<br>";
+    echo "Bags: $bags × ₹500 = ₹" . ($bags * $bag_price) . "<br>";
+
+    echo "<h3>Total Quantity: $total_qty</h3>";
+    echo "<h3>Total Cost: ₹$total_cost</h3>";
+}
+?>
+
+
+
+Q.2.Write a script to generate an XML file called &”Course Registrations.xml”; that stores 5 
+records of students registering for courses. Each record should contain:                    
+Registration ID 
+Student Name 
+Course Name 
+Instructor 
+Date of Registration
+
+<?xml version="1.0" encoding="UTF-8"?>
+<CourseRegistrations>
+
+    <Record>
+        <RegistrationID>101</RegistrationID>
+        <StudentName>Rahul Patil</StudentName>
+        <CourseName>Computer Science</CourseName>
+        <Instructor>Mr. Sharma</Instructor>
+        <DateOfRegistration>2026-04-01</DateOfRegistration>
+    </Record>
+
+    <Record>
+        <RegistrationID>102</RegistrationID>
+        <StudentName>Anjali Deshmukh</StudentName>
+        <CourseName>Mathematics</CourseName>
+        <Instructor>Ms. Joshi</Instructor>
+        <DateOfRegistration>2026-04-02</DateOfRegistration>
+    </Record>
+
+    <Record>
+        <RegistrationID>103</RegistrationID>
+        <StudentName>Rohit Kumar</StudentName>
+        <CourseName>Physics</CourseName>
+        <Instructor>Dr. Mehta</Instructor>
+        <DateOfRegistration>2026-04-03</DateOfRegistration>
+    </Record>
+
+    <Record>
+        <RegistrationID>104</RegistrationID>
+        <StudentName>Pooja Singh</StudentName>
+        <CourseName>Chemistry</CourseName>
+        <Instructor>Dr. Verma</Instructor>
+        <DateOfRegistration>2026-04-04</DateOfRegistration>
+    </Record>
+
+    <Record>
+        <RegistrationID>105</RegistrationID>
+        <StudentName>Amit Shah</StudentName>
+        <CourseName>English</CourseName>
+        <Instructor>Ms. Kulkarni</Instructor>
+        <DateOfRegistration>2026-04-05</DateOfRegistration>
+    </Record>
+
+</CourseRegistrations>

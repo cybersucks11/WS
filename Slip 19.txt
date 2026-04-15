@@ -1,0 +1,76 @@
+Slip 19 
+Q.1 Design HTML form to accept book details (bno, bname and price) from user. Write a PHP script to store input information in MySql book table. 
+
+Create Database Table (MySQL)
+CREATE TABLE book (bno INT PRIMARY KEY, bname VARCHAR(50), price INT);
+
+HTML Form (book.html)
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Book Details Form</h2>
+
+<form method="post" action="book.php">
+    Book No: <input type="text" name="bno"><br><br>
+    Book Name: <input type="text" name="bname"><br><br>
+    Price: <input type="text" name="price"><br><br>
+
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
+
+Book.php
+<?php
+$conn = mysqli_connect("localhost", "root", "", "test");
+
+if (!$conn) {
+    die("Connection failed");
+}
+
+$bno = $_POST['bno'];
+$bname = $_POST['bname'];
+$price = $_POST['price'];
+
+$sql = "INSERT INTO book VALUES ('$bno', '$bname', '$price')";
+
+if (mysqli_query($conn, $sql)) {
+    echo "Record inserted successfully";
+} else {
+    echo "Error: " . mysqli_error($conn);
+}
+
+mysqli_close($conn);
+?>
+
+
+ Q.2. Write a simple web service called Dairy Product Price Service. Dairy product price table to record the different kinds of product prices. It will supply 3 services to the client so that clients can add product price, delete product price, update product price
+
+Create table 
+CREATE TABLE dairy (id INT PRIMARY KEY AUTO_INCREMENT,product_name VARCHAR(50),price INT);
+
+dairy_service.php
+<?php
+$conn = mysqli_connect("localhost", "root", "", "test");
+$action = $_GET['action'];
+if ($action == "add") {
+    $name = $_GET['name'];
+    $price = $_GET['price'];
+    $sql = "INSERT INTO dairy (product_name, price) VALUES ('$name','$price')";
+    echo mysqli_query($conn, $sql) ? "Added" : "Error";
+}
+if ($action == "delete") {
+    $id = $_GET['id'];
+    $sql = "DELETE FROM dairy WHERE id='$id'";
+    echo mysqli_query($conn, $sql) ? "Deleted" : "Error";
+}
+if ($action == "update") {
+    $id = $_GET['id'];
+    $price = $_GET['price'];
+    $sql = "UPDATE dairy SET price='$price' WHERE id='$id'";
+    echo mysqli_query($conn, $sql) ? "Updated" : "Error";
+}
+mysqli_close($conn);
+?>

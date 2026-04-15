@@ -1,0 +1,59 @@
+Slip 15 
+Q 1. Write a short report explaining: a) The identified threat. b) How the threat was exploited. c) The steps you took to mitigate the vulnerability. 
+
+a) Identified Threat
+The identified threat is SQL Injection.
+It is a type of web security vulnerability where an attacker inserts malicious SQL queries through input fields (like login forms) to access or manipulate database data.
+________________________________________
+b) How the Threat was Exploited
+The application was accepting user input without proper validation.
+The attacker entered special SQL input instead of a normal password.
+Example (concept):
+•	Instead of a password, attacker enters a condition that is always true 
+•	The database executes the modified query 
+•	As a result, login authentication is bypassed 
+________________________________________
+c) Steps Taken to Mitigate the Vulnerability
+1.	Used Prepared Statements (Parameterized Queries) 
+2.	Applied input validation to restrict unwanted characters 
+3.	Used password encryption for secure storage 
+4.	Limited login attempts to prevent brute force attacks 
+5.	Enabled proper error handling and logging
+
+
+ Q.2.Write a script to create an XML file called;”Timetable. xml” containing 3 records for a weekly class timetable. Each record should include: 
+ • Day of the Week
+ • Class Name 
+• Instructor 
+• Time Slot 
+• Classroom
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Timetable>
+
+    <Record>
+        <Day>Monday</Day>
+        <ClassName>Mathematics</ClassName>
+        <Instructor>Mr. Sharma</Instructor>
+        <TimeSlot>10:00 AM - 11:00 AM</TimeSlot>
+        <Classroom>A101</Classroom>
+    </Record>
+
+    <Record>
+        <Day>Wednesday</Day>
+        <ClassName>Computer Science</ClassName>
+        <Instructor>Ms. Patil</Instructor>
+        <TimeSlot>11:00 AM - 12:00 PM</TimeSlot>
+        <Classroom>B202</Classroom>
+    </Record>
+
+    <Record>
+        <Day>Friday</Day>
+        <ClassName>Physics</ClassName>
+        <Instructor>Dr. Kumar</Instructor>
+        <TimeSlot>1:00 PM - 2:00 PM</TimeSlot>
+        <Classroom>C303</Classroom>
+    </Record>
+
+</Timetable>

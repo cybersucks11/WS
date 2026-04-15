@@ -1,0 +1,142 @@
+Slip 20 
+Q1] Create a simple web service called Library Book Service. It should manage a table of books and their details (title, author, genre, and price). The service must provide the following . functionalities: 
+• Add Book: Add a new book to the table. 
+• Delete Book: Remove a book based on its ID.
+ • Update Book: Modify the details of an existing book.
+ • Get Book Details: Retrieve details of all books or a specific book by ID.
+
+CREATE TABLE books ( id INT PRIMARY KEY AUTO_INCREMENT, title VARCHAR(100), author VARCHAR(100), genre VARCHAR(50),price INT);
+
+library_service.php
+<?php
+$conn = mysqli_connect("localhost", "root", "", "test");
+
+if (!$conn) {
+    die("Connection Failed");
+}
+$action = $_GET['action'];
+//  Add Book
+if ($action == "add") {
+    $title = $_GET['title'];
+    $author = $_GET['author'];
+    $genre = $_GET['genre'];
+    $price = $_GET['price'];
+    $sql = "INSERT INTO books (title, author, genre, price) 
+            VALUES ('$title','$author','$genre','$price')";
+    echo mysqli_query($conn, $sql) ? "Book Added" : "Error";
+}
+//  Delete Book
+if ($action == "delete") {
+    $id = $_GET['id'];
+    $sql = "DELETE FROM books WHERE id='$id'";
+    echo mysqli_query($conn, $sql) ? "Book Deleted" : "Error";
+}
+//  Update Book
+if ($action == "update") {
+    $id = $_GET['id'];
+    $title = $_GET['title'];
+    $author = $_GET['author'];
+    $genre = $_GET['genre'];
+    $price = $_GET['price'];
+    $sql = "UPDATE books 
+            SET title='$title', author='$author', 
+                genre='$genre', price='$price' 
+            WHERE id='$id'";
+    echo mysqli_query($conn, $sql) ? "Book Updated" : "Error";
+}
+//  Get Book Details
+if ($action == "get") {  
+    // If ID is provided → single book
+    if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+        $result = mysqli_query($conn, "SELECT * FROM books WHERE id='$id'");
+    } 
+    // Otherwise → all books
+    else {
+        $result = mysqli_query($conn, "SELECT * FROM books");
+    }
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo "ID: " . $row['id'] . "<br>";
+        echo "Title: " . $row['title'] . "<br>";
+        echo "Author: " . $row['author'] . "<br>";
+        echo "Genre: " . $row['genre'] . "<br>";
+        echo "Price: ₹" . $row['price'] . "<br><br>";
+    }
+}
+mysqli_close($conn);
+?>
+
+
+
+Q.2] Design an application to register a user and securely store their information. [15M]
+Scenario:
+Create a program that accepts the following details from a user:
+Full Name
+Contact Number
+Email ID
+Password
+Confirm Password
+
+
+Table In postgresql
+CREATE TABLE users ( id SERIAL PRIMARY KEY, full_name VARCHAR(100) NOT NULL, contact VARCHAR(15) NOT NULL, email VARCHAR(100) UNIQUE NOT NULL, password TEXT NOT NULL);
+
+Database Connection (db.php)
+<?php
+$conn = pg_connect("host=localhost dbname=testdb user=postgres password=password");
+
+if (!$conn) {
+    die("Database connection failed");
+}
+?>
+
+index.html)
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Registration</title>
+</head>
+<body>
+
+<h2>User Registration Form</h2>
+
+<form method="POST" action="register.php">
+    Full Name: <input type="text" name="full_name" required><br><br>
+    Contact Number: <input type="text" name="contact" required><br><br>
+    Email ID: <input type="email" name="email" required><br><br>
+    Password: <input type="password" name="password" required><br><br>
+    Confirm Password: <input type="password" name="confirm_password" required><br><br>
+    <input type="submit" value="Register">
+</form>
+
+</body>
+</html>
+
+
+register.php
+<?php
+include 'db.php';
+// Get form data
+$full_name = $_POST['full_name'];
+$contact = $_POST['contact'];
+$email = $_POST['email'];
+$password = $_POST['password'];
+$confirm_password = $_POST['confirm_password'];
+// Validate password match
+if ($password !== $confirm_password) {
+    echo "Error: Passwords do not match!";
+    exit;
+}
+// Encrypt password
+$hashed_password = password_hash($password, PASSWORD_DEFAULT);
+// Insert into database
+$query = "INSERT INTO users (full_name, contact, email, password) VALUES ($1, $2, $3, $4)";
+$result = pg_query_params($conn, $query, array($full_name, $contact, $email, $hashed_password));
+if ($result) {
+    echo "User registered successfully!";
+} else {
+    echo "Error: Could not register user";
+}
+// Close connection
+pg_close($conn);
+?>

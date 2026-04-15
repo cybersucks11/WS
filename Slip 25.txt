@@ -1,0 +1,30 @@
+Slip 25
+Q.1] Perform SQL injection to modify another user profile data through an UPDATE query.
+UPDATE users 
+SET name='Rahul', email='rahul@gmail.com' 
+WHERE user_id=1;
+
+Q2) Write a script to create “cricket.xml” file with multiple elements as shown below: [15M] 
+<Cricket Team> 
+<Team Country =“Australia”> 
+<Player>---------------</Player> 
+<Runs>------------------</Runs> 
+<Wicket>---------------</Wicket. 
+</Team> 
+</Create Team> 
+Write a script to add multiple elements in “cricket.xml” file of category ,”country=India”?
+
+<?xml version="1.0" encoding="UTF-8"?>
+<CricketTeam>
+    <Team Country="Australia">
+        <Player>David Warner</Player>
+        <Runs>12000</Runs>
+        <Wicket>0</Wicket>
+    </Team>
+    <Team Country="India">
+        <Player>Steve Smith</Player>
+        <Runs>9500</Runs>
+        <Wicket>20</Wicket>
+    </Team>
+</CricketTeam>
+

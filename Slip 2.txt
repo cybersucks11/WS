@@ -1,0 +1,27 @@
+Slip 2
+Q1) Write a script to create XML file named “Subject.xml” Stored at least 3 records containing 
+subject id, subject name, class, semester etc.                                                     
+<?xml version="1.0" encoding="UTF-8"?>
+<subjects>
+    <subject>
+        <subject_id>101</subject_id>
+        <subject_name>Mathematics</subject_name>
+        <class>FY BSc IT</class>
+        <semester>1</semester>
+    </subject>
+    <subject>
+        <subject_id>102</subject_id>
+        <subject_name>Computer Fundamentals</subject_name>
+        <class>FY BSc IT</class>
+        <semester>1</semester>
+    </subject>
+    <subject>
+        <subject_id>103</subject_id>
+        <subject_name>Web Development</subject_name>
+        <class>FY BSc IT</class>
+        <semester>2</semester>
+    </subject>
+</subjects>
+
+Q.2 Using SQL injection attack on Login check whether you can log into another user’s account 
+without knowing the correct password.   
