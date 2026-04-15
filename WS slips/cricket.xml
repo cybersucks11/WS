@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<CricketTeam>
+  <Team Country="Australia">
+    <Player>Smith</Player>
+    <Runs>80</Runs>
+    <Wicket>2</Wicket>
+  </Team>
+  <Team Country="India">
+    <Player>Virat</Player>
+    <Runs>100</Runs>
+    <Wicket>1</Wicket>
+  </Team>
+  <Team Country="England">
+    <Player>Root</Player>
+    <Runs>75</Runs>
+    <Wicket>3</Wicket>
+  </Team>
+</CricketTeam>

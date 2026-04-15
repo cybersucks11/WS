@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<Breakfast>
+  <Item>
+    <Name>French Fries</Name>
+    <Price>45</Price>
+    <Description>Young youths are very much interested to eat it</Description>
+    <Calories>650</Calories>
+  </Item>
+<Item><Category>Juice</Category><Name>Orange Juice</Name><Price>30</Price><Description>Fresh and healthy drink</Description><Calories>120</Calories></Item></Breakfast>

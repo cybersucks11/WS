@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<CourseRegistrations>
+  <Registration>
+    <RegistrationID>R101</RegistrationID>
+    <StudentName>Asha</StudentName>
+    <CourseName>Cyber Security</CourseName>
+    <Instructor>Mr. A</Instructor>
+    <Date>01-04-2026</Date>
+  </Registration>
+  <Registration>
+    <RegistrationID>R102</RegistrationID>
+    <StudentName>Rahul</StudentName>
+    <CourseName>DBMS</CourseName>
+    <Instructor>Mrs. B</Instructor>
+    <Date>02-04-2026</Date>
+  </Registration>
+  <Registration>
+    <RegistrationID>R103</RegistrationID>
+    <StudentName>Neha</StudentName>
+    <CourseName>Python</CourseName>
+    <Instructor>Mr. C</Instructor>
+    <Date>03-04-2026</Date>
+  </Registration>
+  <Registration>
+    <RegistrationID>R104</RegistrationID>
+    <StudentName>Amit</StudentName>
+    <CourseName>AI</CourseName>
+    <Instructor>Dr. D</Instructor>
+    <Date>04-04-2026</Date>
+  </Registration>
+  <Registration>
+    <RegistrationID>R105</RegistrationID>
+    <StudentName>Sara</StudentName>
+    <CourseName>Web Dev</CourseName>
+    <Instructor>Mr. E</Instructor>
+    <Date>05-04-2026</Date>
+  </Registration>
+</CourseRegistrations>

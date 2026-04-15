@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="car.xsl"?>
+
+<cars>
+    <car>
+        <id>1</id>
+        <company>Toyota</company>
+        <model>Innova</model>
+        <engine>2.4L</engine>
+        <mileage>15</mileage>
+    </car>
+
+    <car>
+        <id>2</id>
+        <company>Honda</company>
+        <model>City</model>
+        <engine>1.5L</engine>
+        <mileage>18</mileage>
+    </car>
+
+    <car>
+        <id>3</id>
+        <company>Hyundai</company>
+        <model>i20</model>
+        <engine>1.2L</engine>
+        <mileage>20</mileage>
+    </car>
+</cars>
